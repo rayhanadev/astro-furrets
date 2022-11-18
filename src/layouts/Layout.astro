@@ -1,0 +1,114 @@
+---
+import '../styles/fonts.scss';
+import AuthStore from '@components/AuthStore';
+import { getUser } from '@libs/useReplAuth';
+import { SEO } from 'astro-seo';
+
+const user = getUser({ client: Astro });
+
+export interface Props {
+	title: string;
+	ogtitle: string;
+	description: string;
+}
+
+const { UMAMI_ANALYTICS_KEY } = import.meta.env;
+
+const { title, ogtitle, description } = Astro.props;
+---
+
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+
+		<link
+			rel="apple-touch-icon"
+			sizes="180x180"
+			href="/apple-touch-icon.png"
+		/>
+
+		<link
+			rel="icon"
+			type="image/png"
+			sizes="32x32"
+			href="/favicon-32x32.png"
+		/>
+		<link
+			rel="icon"
+			type="image/png"
+			sizes="16x16"
+			href="/favicon-16x16.png"
+		/>
+
+		<link rel="manifest" href="/manifest.json" />
+		<link rel="mask-icon" href="/safari-pinned-tab.svg" color="#4f7c8a" />
+
+		<meta name="msapplication-TileColor" content="#4f7c8a" />
+		<meta name="msapplication-TileImage" content="/mstile-144x144.png" />
+		<meta name="theme-color" content="#f3f3f3" />
+
+		<SEO
+			title={title}
+			description={description}
+			openGraph={{
+				basic: {
+					type: 'website',
+					title: ogtitle || 'Astro Furrets Template',
+					image: '/banner.png',
+				},
+				optional: {
+					description:
+						"RayhanADev's scaffolding for creating a new Astro.build application!",
+					determiner: 'the',
+				},
+				image: {
+					alt: 'RayhanADev Logo',
+					type: 'image/png',
+				},
+			}}
+			twitter={{
+				card: 'summary',
+				site: 'astrodotbuild',
+				creator: 'rayhanadev',
+			}}
+		/>
+
+		<meta name="generator" content={Astro.generator} />
+		<title>{title}</title>
+
+		<script
+			async
+			defer
+			data-website-id={UMAMI_ANALYTICS_KEY}
+			type="text/partytown"
+			src="https://umami.furret.codes/umami.js"
+		></script>
+
+		<style is:global lang="scss">
+			@tailwind base;
+
+			@layer base {
+				html {
+					height: -webkit-fill-available;
+				}
+
+				body {
+					min-height: 100vh;
+					min-height: -webkit-fill-available;
+				}
+			}
+
+			@tailwind components;
+			@tailwind utilities;
+		</style>
+	</head>
+	<body
+		class="relative min-h-screen min-h-webkitscreen py-16 bg-background-root text-foreground-default text-base font-body"
+	>
+		<AuthStore client:load user={user} />
+		<slot />
+	</body>
+</html>
