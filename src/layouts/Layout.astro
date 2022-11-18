@@ -51,13 +51,13 @@ const { title, ogtitle, description } = Astro.props;
 		<meta name="theme-color" content="#f3f3f3" />
 
 		<SEO
-			title={title}
-			description={description}
+			title={title || import.meta.env.REPL_SLUG}
+			description={description || "RayhanADev's scaffolding for creating a new Astro.build application!"}
 			openGraph={{
 				basic: {
 					type: 'website',
 					title: ogtitle || 'Astro Furrets Template',
-					image: '/banner.png',
+					image: `${Astro.site}opengraphimage.png`,
 				},
 				optional: {
 					description:
@@ -66,26 +66,47 @@ const { title, ogtitle, description } = Astro.props;
 				},
 				image: {
 					alt: 'RayhanADev Logo',
-					type: 'image/png',
+					type: 'image/svg+xml',
 				},
 			}}
 			twitter={{
-				card: 'summary',
+				card: 'summary_large_image',
 				site: 'astrodotbuild',
 				creator: 'rayhanadev',
+			}}
+			extend={{
+				meta: [
+					{
+						name: 'twitter:image',
+						content: `${Astro.site}twittercard.png`,
+					},
+					{
+						name: 'twitter:title',
+						content: 'Astro Furrets Template',
+					},
+					{
+						name: 'twitter:description',
+						content:
+							"RayhanADev's scaffolding for creating a new Astro.build application!",
+					},
+				],
 			}}
 		/>
 
 		<meta name="generator" content={Astro.generator} />
 		<title>{title}</title>
 
-		<script
-			async
-			defer
-			data-website-id={UMAMI_ANALYTICS_KEY}
-			type="text/partytown"
-			src="https://umami.furret.codes/umami.js"
-		></script>
+		{
+			UMAMI_ANALYTICS_KEY && (
+				<script
+					async
+					defer
+					data-website-id={UMAMI_ANALYTICS_KEY}
+					type="text/partytown"
+					src="https://umami.furret.codes/umami.js"
+				></script>
+			)
+		}
 
 		<style is:global lang="scss">
 			@tailwind base;
