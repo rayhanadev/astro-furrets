@@ -1,14 +1,14 @@
 import vite from './vite.config.mjs';
 import node from '@astrojs/node';
-import partytown from '@astrojs/partytown';
-import react from '@astrojs/react';
-import sitemap from '@astrojs/sitemap';
-import tailwind from '@astrojs/tailwind';
-import compress from 'astro-compress';
-import { astroImageTools } from 'astro-imagetools';
-import robotsTxt from 'astro-robots-txt';
 import serviceWorker from 'astro-service-worker';
+import tailwind from '@astrojs/tailwind';
+import react from '@astrojs/react';
+import partytown from '@astrojs/partytown';
+import compress from 'astro-compress';
+import sitemap from '@astrojs/sitemap';
+import robotsTxt from 'astro-robots-txt';
 import webmanifest from 'astro-webmanifest';
+import { astroImageTools } from 'astro-imagetools';
 import { defineConfig } from 'astro/config';
 
 // https://astro.build/config
@@ -51,8 +51,8 @@ export default defineConfig({
 			description: 'A project made with Astro Furrets! 🎉',
 			lang: 'en-US',
 			start_url: '/',
-			theme_color: '#f3f3f3',
-			background_color: '#f3f3f3',
+			theme_color: '#14131E',
+			background_color: '#14131E',
 			display: 'standalone',
 			config: {
 				outfile: 'manifest.json',
