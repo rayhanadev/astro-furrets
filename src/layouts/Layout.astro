@@ -1,6 +1,6 @@
 ---
 import '../styles/fonts.scss';
-import AuthStore from '@components/AuthStore';
+import AuthStore from '@components/stores/AuthStore';
 import { getUser } from '@libs/useReplAuth';
 import { SEO } from 'astro-seo';
 
@@ -52,7 +52,8 @@ const { title, ogtitle, description } = Astro.props;
 
 		<SEO
 			title={title || import.meta.env.REPL_SLUG}
-			description={description || "RayhanADev's scaffolding for creating a new Astro.build application!"}
+			description={description ||
+				"RayhanADev's scaffolding for creating a new Astro.build application!"}
 			openGraph={{
 				basic: {
 					type: 'website',
@@ -104,7 +105,7 @@ const { title, ogtitle, description } = Astro.props;
 					data-website-id={UMAMI_ANALYTICS_KEY}
 					type="text/partytown"
 					src="https://umami.furret.codes/umami.js"
-				></script>
+				/>
 			)
 		}
 

@@ -51,6 +51,7 @@
 		"fastify": "^4.10.0",
 		"koa-compress": "^5.1.0",
 		"koa-helmet": "^6.1.0",
+		"koa2-cors": "^2.0.6",
 		"nanostores": "^0.7.1",
 		"react": "^18.2.0",
 		"react-dom": "^18.2.0",

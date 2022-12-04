@@ -1,18 +1,18 @@
 import vite from './vite.config.mjs';
 import node from '@astrojs/node';
-import serviceWorker from 'astro-service-worker';
-import tailwind from '@astrojs/tailwind';
-import react from '@astrojs/react';
 import partytown from '@astrojs/partytown';
-import compress from 'astro-compress';
+import react from '@astrojs/react';
 import sitemap from '@astrojs/sitemap';
-import robotsTxt from 'astro-robots-txt';
-import webmanifest from 'astro-webmanifest';
+import tailwind from '@astrojs/tailwind';
+import compress from 'astro-compress';
 import { astroImageTools } from 'astro-imagetools';
+import robotsTxt from 'astro-robots-txt';
+import serviceWorker from 'astro-service-worker';
+import webmanifest from 'astro-webmanifest';
 import { defineConfig } from 'astro/config';
 
 // https://astro.build/config
-const baseUrl = `https://${process.env.REPL_SLUG}.${process.env.REPL_OWNER}.repl.co`;
+const baseUrl = `https://${process.env.REPL_SLUG.toLowerCase()}.${process.env.REPL_OWNER.toLowerCase()}.repl.co`;
 
 export default defineConfig({
 	vite,

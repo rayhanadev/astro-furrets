@@ -5,4 +5,15 @@
 	"singleQuote": true,
 	"bracketSpacing": true,
 	"astroAllowShorthand": false
+  "importOrder": [
+		"^@layouts/(.*)$",
+		"^@components/(.*)$",
+		"^@stores/(.*)$",
+		"^@libs/(.*)$",
+		"^@styles/(.*)$",
+		"^@/(.*)$",
+		"^[./]"
+	],
+  "importOrderSeparation": true,
+  "importOrderSortSpecifiers": true
 }

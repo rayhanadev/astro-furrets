@@ -1,18 +1,19 @@
 {
 	"extends": "astro/tsconfigs/base",
 	"compilerOptions": {
+		"types": ["unplugin-icons/types/react"],
 		"target": "esnext",
 		"module": "esnext",
 		"lib": ["dom", "dom.iterable", "esnext"],
 		"jsx": "preserve",
 		"baseUrl": ".",
 		"paths": {
-			"@/*": ["./src/*"],
-			"@components/*": ["./src/components/*"],
 			"@layouts/*": ["./src/layouts/*"],
-			"@libs/*": ["./src/libs/*"],
+			"@components/*": ["./src/components/*"],
 			"@stores/*": ["./src/stores/*"],
+			"@libs/*": ["./src/libs/*"],
 			"@styles/*": ["./src/styles/*"]
+			"@/*": ["./src/*"],
 		}
 	}
 }
