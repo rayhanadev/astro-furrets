@@ -12,8 +12,8 @@
 			"@components/*": ["./src/components/*"],
 			"@stores/*": ["./src/stores/*"],
 			"@libs/*": ["./src/libs/*"],
-			"@styles/*": ["./src/styles/*"]
-			"@/*": ["./src/*"],
+			"@styles/*": ["./src/styles/*"],
+			"@/*": ["./src/*"]
 		}
 	}
 }

@@ -1,5 +1,6 @@
-import type { User } from '@stores/Auth';
 import type { AstroGlobal } from 'astro';
+
+import type { User } from '@stores/Auth';
 
 const getUserInfo = (req: Request): User | null => {
 	const { headers } = req;

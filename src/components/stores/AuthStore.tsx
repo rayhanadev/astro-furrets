@@ -1,7 +1,8 @@
 import { useStore } from '@nanostores/react';
+import React, { useEffect } from 'react';
+
 import user, { setUser } from '@stores/Auth';
 import type { User } from '@stores/Auth';
-import React, { useEffect } from 'react';
 
 interface AuthStoreProps {
 	user: User;

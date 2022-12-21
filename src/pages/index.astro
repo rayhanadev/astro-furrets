@@ -1,8 +1,9 @@
 ---
+import { Picture } from 'astro-imagetools/components';
+
 import Login from '../components/Login';
 import Layout from '../layouts/Layout.astro';
 import { getUser } from '../libs/useReplAuth';
-import { Picture } from 'astro-imagetools/components';
 
 const user = getUser({ client: Astro });
 ---

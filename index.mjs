@@ -1,6 +1,4 @@
-import { handler as ssrHandler } from './dist/server/entry.mjs';
-import { handler as imageHandler } from './utils/imagetools.mjs';
-import contentSecurityPolicy from './utils/contentSecurityPolicy.mjs';
+import Router from '@koa/router';
 import { morgan } from '@ts-koa/koa-morgan';
 import Koa from 'koa';
 import cors from 'koa2-cors';
@@ -8,6 +6,10 @@ import m from 'koa-connect';
 import helmet from 'koa-helmet';
 import serve from 'koa-static';
 import path from 'node:path';
+
+import { handler as ssrHandler } from './dist/server/entry.mjs';
+import contentSecurityPolicy from './utils/contentSecurityPolicy.mjs';
+import { handler as imageHandler } from './utils/imagetools.mjs';
 
 const app = new Koa();
 
@@ -31,6 +33,16 @@ app.use(helmet.permittedCrossDomainPolicies());
 app.use(helmet.xssFilter());
 
 app.use(serve(path.join(process.cwd(), 'dist/', 'client/')));
+
+const _ = new Router();
+
+_.get('/db', async (ctx) => {
+	ctx.body = JSON.stringify({
+		url: process.env.REPLIT_DB_URL,
+	});
+});
+
+app.use(_.routes()).use(_.allowedMethods());
 
 app.use(m(ssrHandler));
 app.use(m(imageHandler));

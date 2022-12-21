@@ -1,4 +1,3 @@
-import vite from './vite.config.mjs';
 import node from '@astrojs/node';
 import partytown from '@astrojs/partytown';
 import react from '@astrojs/react';
@@ -10,6 +9,8 @@ import robotsTxt from 'astro-robots-txt';
 import serviceWorker from 'astro-service-worker';
 import webmanifest from 'astro-webmanifest';
 import { defineConfig } from 'astro/config';
+
+import vite from './vite.config.mjs';
 
 // https://astro.build/config
 const baseUrl = `https://${process.env.REPL_SLUG.toLowerCase()}.${process.env.REPL_OWNER.toLowerCase()}.repl.co`;

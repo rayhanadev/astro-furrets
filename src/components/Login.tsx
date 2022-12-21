@@ -1,5 +1,6 @@
-import { authUser } from '@libs/useReplAuth';
 import React from 'react';
+
+import { authUser } from '@libs/useReplAuth';
 
 const Login = () => {
 	return (

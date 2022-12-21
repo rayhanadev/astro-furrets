@@ -1,8 +1,11 @@
 ---
-import '../styles/fonts.scss';
-import AuthStore from '@components/stores/AuthStore';
-import { getUser } from '@libs/useReplAuth';
 import { SEO } from 'astro-seo';
+
+import AuthStore from '@components/stores/AuthStore';
+
+import { getUser } from '@libs/useReplAuth';
+
+import '../styles/fonts.scss';
 
 const user = getUser({ client: Astro });
 
