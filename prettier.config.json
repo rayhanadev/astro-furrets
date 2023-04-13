@@ -6,6 +6,7 @@
 	"bracketSpacing": true,
 	"astroAllowShorthand": false,
 	"importOrder": [
+		"^node:(.*)$",
 		"^@layouts/(.*)$",
 		"^@components/(.*)$",
 		"^@stores/(.*)$",

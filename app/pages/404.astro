@@ -1,0 +1,38 @@
+---
+import { Picture } from 'astro-imagetools/components';
+
+import Layout from '@layouts/Layout.astro';
+
+import Login from '@components/Login';
+
+import { getUser } from '@libs/useReplAuth';
+
+const user = getUser({ client: Astro });
+---
+
+<Layout
+	title="404 | <PROJECT_NAME>"
+	ogtitle="This page was not found..."
+	description={`Seems like this page was not found! Try going back to ${
+		import.meta.env.SITE
+	}`}
+	visible={true}
+>
+	<main class="m-auto flex max-w-sm flex-col items-center justify-center">
+		<h1
+			class="font-display mt-8 mb-4 text-4xl font-bold md:whitespace-nowrap md:text-5xl"
+		>
+			Page not found.
+		</h1>
+		<p class="text-foreground-dimmest w-full md:pb-16 md:text-lg">
+			Seems like this page was not found! You might have typed an
+			incorrect url in the search bar or found a broken link.{' '}
+			<a
+				class="hover:decoration-foreground-dimmer hover:text-foreground-dimmer underline transition-all duration-200"
+				href="/"
+			>
+				Try going back home?
+			</a>
+		</p>
+	</main>
+</Layout>

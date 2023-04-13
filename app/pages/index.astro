@@ -1,0 +1,52 @@
+---
+import Home from '~icons/material-symbols/home-rounded';
+
+import Layout from '@layouts/Layout.astro';
+
+import Login from '@components/Login';
+
+import { getUser } from '@libs/useReplAuth';
+
+const user = getUser({ client: Astro });
+---
+
+<Layout
+	title="<PROJECT_NAME>"
+	ogtitle="<PROJECT_DESCRIPTION>"
+	description="<PROJECT_DESCRIPTION>"
+	visible={true}
+>
+	<main
+		class="bg-background-default my-8 mx-auto max-w-sm rounded py-5 px-8 md:my-0"
+	>
+		<div class="flex w-full flex-col items-start justify-center">
+			<div
+				class="mt-8 mb-4 flex w-full flex-row items-start justify-between gap-4"
+			>
+				<h1 class="font-display text-4xl font-bold">Astro Furrets</h1>
+				<span
+					class="hover:text-foreground-dimmer active:text-foreground-dimmest my-auto h-10 w-10 cursor-pointer transition-all duration-200"
+				>
+					<a href="/" rel="preload"
+						><Home style={{ width: '40px', height: '40px' }} /></a
+					>
+				</span>
+			</div>
+			<p class="text-foreground-dimmest w-full">
+				A little bit of scaffolding for RayhanADev's kewl projects.
+			</p>
+		</div>
+
+		<img src="/logo.png" alt="RayhanADev's Logo" />
+
+		{
+			user && user.name ? (
+				<p class="my-2">
+					Signed in as <strong>{user.name}</strong>.
+				</p>
+			) : (
+				<Login client:load />
+			)
+		}
+	</main>
+</Layout>

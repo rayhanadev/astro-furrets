@@ -11,17 +11,14 @@ const config = {
 	plugins: [
 		postcssImport(),
 		postcssFontpath({
-			formats: [
-				{ type: 'woff2', ext: 'woff2' },
-				{ type: 'truetype', ext: 'ttf' },
-			],
+			formats: [{ type: 'woff2', ext: 'woff2' }],
 		}),
 		tailwindcssNesting(),
 		tailwindcss({
 			config: tailwind,
 		}),
 		autoprefixer(),
-		...(process.env.NODE_ENV === 'production' ? [cssnano()] : []),
+		cssnano(),
 	],
 };
 

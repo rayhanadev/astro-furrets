@@ -1,0 +1,140 @@
+---
+import { SEO } from 'astro-seo';
+
+import AuthStore from '@components/stores/AuthStore';
+
+import { getUser } from '@libs/useReplAuth';
+
+import '@styles/fonts.scss';
+
+const user = getUser({ client: Astro });
+
+export interface Props {
+	title: string;
+	ogtitle: string;
+	description: string;
+	visible: boolean;
+}
+
+const { UMAMI_ANALYTICS_KEY } = import.meta.env;
+
+const { title, ogtitle, description, visible } = Astro.props;
+---
+
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+
+		<link
+			rel="apple-touch-icon"
+			sizes="180x180"
+			href="/apple-touch-icon.png"
+		/>
+
+		<link
+			rel="icon"
+			type="image/png"
+			sizes="32x32"
+			href="/favicon-32x32.png"
+		/>
+		<link
+			rel="icon"
+			type="image/png"
+			sizes="16x16"
+			href="/favicon-16x16.png"
+		/>
+
+		<link rel="manifest" href="/manifest.json" />
+		<link rel="mask-icon" href="/safari-pinned-tab.svg" color="#4f7c8a" />
+		<meta name="apple-mobile-web-app-capable" content="yes" />
+		<meta name="apple-mobile-web-app-status-bar-style" content="#14131E" />
+
+		<meta name="msapplication-TileColor" content="#4f7c8a" />
+		<meta name="msapplication-TileImage" content="/mstile-144x144.png" />
+		<meta name="theme-color" content="#f3f3f3" />
+
+		<meta
+			name="robots"
+			content={`${visible ? 'follow' : 'nofollow'}, ${
+				visible ? 'index' : 'noindex'
+			}, max-snippet:-1, max-video-preview:-1, max-image-preview:large`}
+		/>
+
+		<SEO
+			title={title || import.meta.env.REPL_SLUG}
+			description={description || '<PROJECT_DESCRIPTION>'}
+			canonical={import.meta.env.SITE}
+			noindex={!visible}
+			nofollow={!visible}
+			openGraph={{
+				basic: {
+					type: 'website',
+					title: ogtitle,
+					image: `${import.meta.env.SITE}/opengraphimage.png`,
+				},
+				optional: {
+					description: description,
+					locale: 'en-US',
+					siteName: '<PROJECT_NAME>',
+				},
+				image: {
+					alt: "Ray's cover image, with the text: Teen Fullstack Web Developer and Software Engineer. Contact me at ray@furret.dev.",
+					type: 'image/png',
+				},
+			}}
+			twitter={{
+				title: title,
+				description: description,
+				image: `${import.meta.env.SITE}/twittercard.png`,
+				imageAlt:
+					"Ray's cover image, with the text: Teen Fullstack Web Developer and Software Engineer. Contact me at ray@furret.dev.",
+				card: 'summary_large_image',
+				site: 'rayhanadev',
+				creator: 'rayhanadev',
+			}}
+		/>
+
+		<meta name="generator" content={Astro.generator} />
+		<title>{title}</title>
+
+		{
+			UMAMI_ANALYTICS_KEY && (
+				<script
+					async
+					defer
+					data-website-id={UMAMI_ANALYTICS_KEY}
+					type="text/partytown"
+					src="https://umami.furret.dev/umami.js"
+				/>
+			)
+		}
+
+		<style is:global lang="scss">
+			@tailwind base;
+
+			@layer base {
+				html {
+					max-height: -webkit-fill-available;
+					overflow-y: auto;
+				}
+
+				body {
+					min-height: 100vh;
+					min-height: -webkit-fill-available;
+				}
+			}
+
+			@tailwind components;
+			@tailwind utilities;
+		</style>
+	</head>
+	<body
+		class="bg-background-root text-foreground-default font-body relative flex flex-col items-center justify-start overflow-y-auto text-base md:justify-center"
+	>
+		<AuthStore client:load user={user} />
+		<slot />
+	</body>
+</html>

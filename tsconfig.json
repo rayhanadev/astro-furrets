@@ -8,12 +8,12 @@
 		"jsx": "preserve",
 		"baseUrl": ".",
 		"paths": {
-			"@layouts/*": ["./src/layouts/*"],
-			"@components/*": ["./src/components/*"],
-			"@stores/*": ["./src/stores/*"],
-			"@libs/*": ["./src/libs/*"],
-			"@styles/*": ["./src/styles/*"],
-			"@/*": ["./src/*"]
+			"@layouts/*": ["./app/layouts/*"],
+			"@components/*": ["./app/components/*"],
+			"@stores/*": ["./app/stores/*"],
+			"@libs/*": ["./app/libs/*"],
+			"@styles/*": ["./app/styles/*"],
+			"@/*": ["./app/*"]
 		}
 	}
 }

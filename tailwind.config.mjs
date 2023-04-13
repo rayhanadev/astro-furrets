@@ -1,7 +1,8 @@
+import typographyPlugin from '@tailwindcss/typography';
 import resolveConfig from 'tailwindcss/resolveConfig.js';
 
 export default resolveConfig({
-	content: ['./src/**/*.{astro,html,js,jsx,md,mdx,svelte,ts,tsx,vue}'],
+	content: ['./app/**/*.{astro,html,js,jsx,md,mdx,svelte,ts,tsx,vue}'],
 	presets: [],
 	darkMode: 'media',
 	theme: {
@@ -1036,5 +1037,5 @@ export default resolveConfig({
 		'active',
 		'disabled',
 	],
-	plugins: [],
+	plugins: [typographyPlugin],
 });
