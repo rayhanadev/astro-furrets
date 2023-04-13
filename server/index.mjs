@@ -5,7 +5,7 @@ import formbody from '@fastify/formbody';
 import helmet from '@fastify/helmet';
 import middie from '@fastify/middie';
 import Fastify from 'fastify';
-import LRU from 'lru-cache';
+import { LRUCache } from 'lru-cache'
 // import serve from '@fastify/static';
 import serve from 'serve-static';
 import { customAlphabet } from 'nanoid';
@@ -25,7 +25,7 @@ const fastify = Fastify({
 		: `anon-${nanoid()}`,
 });
 
-const cache = new LRU({
+const cache = new LRUCache({
 	ttl: 1000 * 60 * 60 * 4,
 	max: 50,
 	maxSize: 5000,
